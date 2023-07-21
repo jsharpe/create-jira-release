@@ -17,6 +17,9 @@ runs:
       run: git fetch --prune --unshallow --tags
       shell: bash
 
+    - name: Delete any tags at HEAD
+      run: git tag -d $(git tag --points-at=HEAD)
+
     - name: Collect issue numbers since last release/tag
       run: |
         export LC_ALL=en_US.utf8
